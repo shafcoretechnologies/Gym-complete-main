@@ -1,0 +1,95 @@
+{
+  "site": {
+    "name": "SKY FITNESS",
+    "tagline": "Premium Fitness Centre",
+    "description": "Modern equipment, expert coaches, flexible timings. Join our community of 500+ members transforming their health.",
+    "phone": "919066434725",
+    "phoneDisplay": "+91 90664 34725",
+    "email": "info@skyfitness.com"
+  },
+  "seo": {
+    "pageTitle": "SKY FITNESS Gym — NR Mohalla, Mysore's Premium Fitness Centre",
+    "metaDescription": "Modern equipment, expert coaches, flexible timings. Join 500+ members at SKY FITNESS. Free trial available."
+  },
+  "hero": {
+    "badge": "Shivaji Road, NR Mohalla",
+    "title": "Mysore's Premium Fitness Centre",
+    "subtitle": "Modern equipment, expert coaches, flexible timings. Join 500+ members already transforming their health at SKY FITNESS.",
+    "cta": "Start Free Trial",
+    "stats": [
+      { "number": "500+", "label": "Members" },
+      { "number": "8+", "label": "Trainers" },
+      { "number": "5:00 AM", "label": "Opens Daily" },
+      { "number": "3 yrs", "label": "In Mysore" }
+    ]
+  },
+  "contact": {
+    "address": "#544 Shivaji Road, NR Mohalla, Mysore — 570007",
+    "location": "NR Mohalla, Shivaji Road, Mysore",
+    "timings": {
+      "weekdays": "5:00 AM – 10:00 PM",
+      "weekend": "6:00 AM – 8:00 PM"
+    },
+    "startingPrice": "₹999"
+  },
+  "sections": {
+    "programs": {
+      "eyebrow": "What we offer",
+      "title": "Programs for every goal",
+      "subtitle": "Whether you want to lose weight, build muscle, or just stay active — we have a class for you."
+    },
+    "schedule": {
+      "eyebrow": "Timetable",
+      "title": "Class schedule",
+      "subtitle": "Tap any class to book your spot instantly on WhatsApp."
+    },
+    "trainers": {
+      "eyebrow": "The team",
+      "title": "Your coaches",
+      "subtitle": "Certified trainers with real results. Chat with any trainer directly on WhatsApp."
+    },
+    "pricing": {
+      "eyebrow": "Memberships",
+      "title": "Simple, clear pricing",
+      "subtitle": "No hidden charges. No joining fees. First trial session is completely free."
+    },
+    "gallery": {
+      "eyebrow": "The facility",
+      "title": "See inside SKY FITNESS"
+    },
+    "testimonials": {
+      "eyebrow": "Member stories",
+      "title": "What our members say"
+    },
+    "contact": {
+      "eyebrow": "Get in touch",
+      "title": "Visit us or Chat on WhatsApp",
+      "subtitle": "The fastest way to join is WhatsApp. Send us a message and we'll reply within minutes — not hours."
+    }
+  },
+  "pricing": [
+    {
+      "id": "basic",
+      "name": "Basic",
+      "price": 999,
+      "note": "Gym floor only · No lock-in"
+    },
+    {
+      "id": "elite",
+      "name": "Elite",
+      "price": 1799,
+      "note": "All classes included · Best value",
+      "popular": true
+    },
+    {
+      "id": "champion",
+      "name": "Champion",
+      "price": 2999,
+      "note": "Full access + personal coaching"
+    }
+  ],
+  "footer": {
+    "copyright": "© 2025 SKY FITNESS. All rights reserved.",
+    "credit": "Built with Shafcore CMS"
+  }
+}

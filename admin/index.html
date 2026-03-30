@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKY FITNESS - Admin Panel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #e8261a;
+      --dark: #111318;
+      --body: #2c3142;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --surface: #f8f9fa;
+      --white: #ffffff;
+      --success: #16a34a;
+      --error: #dc2626;
+      --warning: #d97706;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      background: var(--surface);
+      color: var(--body);
+      line-height: 1.6;
+    }
+
+    .admin-container {
+      max-width: 1080px;
+      margin: 0 auto;
+      background: var(--white);
+      min-height: 100vh;
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .admin-header {
+      background: linear-gradient(135deg, var(--red) 0%, #ff3b2e 100%);
+      color: var(--white);
+      padding: 40px 24px;
+    }
+
+    .admin-header h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .admin-header p {
+      font-size: 14px;
+      opacity: 0.9;
+      max-width: 760px;
+    }
+
+    .admin-content {
+      padding: 32px 24px 40px;
+    }
+
+    .notice {
+      margin-bottom: 24px;
+      padding: 16px 18px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #fff7ed;
+      color: #9a3412;
+    }
+
+    .notice strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .lockout {
+      display: none;
+      margin-top: 24px;
+      padding: 20px;
+      border-radius: 12px;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+    }
+
+    .lockout.show {
+      display: block;
+    }
+
+    .status-message {
+      padding: 16px 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      display: none;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .status-message.success {
+      display: flex;
+      background: #dcfce7;
+      color: #166534;
+      border-left: 4px solid var(--success);
+    }
+
+    .status-message.error {
+      display: flex;
+      background: #fee2e2;
+      color: #991b1b;
+      border-left: 4px solid var(--error);
+    }
+
+    .admin-section {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+      color: var(--dark);
+    }
+
+    .section-note {
+      margin-top: -8px;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 14px;
+      color: var(--body);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(232, 38, 26, 0.1);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 96px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .pricing-wrapper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .pricing-plan {
+      background: var(--surface);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .pricing-plan h3 {
+      font-size: 14px;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 2px solid var(--border);
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-width: 160px;
+      flex: 1;
+    }
+
+    .btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .btn-save {
+      background: var(--success);
+      color: white;
+    }
+
+    .btn-export {
+      background: var(--red);
+      color: white;
+    }
+
+    .btn-import {
+      background: var(--border);
+      color: var(--body);
+    }
+
+    .btn-reset {
+      background: var(--muted);
+      color: white;
+    }
+
+    .btn:hover:not(:disabled) {
+      transform: translateY(-1px);
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    .admin-form[aria-disabled="true"] {
+      opacity: 0.45;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    @media (max-width: 768px) {
+      .form-row,
+      .pricing-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <div class="admin-header">
+      <h1>Admin Panel</h1>
+      <p>Edit only the public-facing content that is safe to change from the CMS. SEO-sensitive fields like page title, meta description, and footer attribution are intentionally locked out of the admin.</p>
+    </div>
+
+    <div class="admin-content">
+      <div class="notice">
+        <strong>Production-safe editing flow</strong>
+        Use this admin locally, then export `content.json` and deploy that file. Public hosting should not expose a writable admin for a static site.
+      </div>
+
+      <div id="environmentNotice" class="lockout">
+        <strong>Editing is disabled on public hosts.</strong>
+        Open this admin on `localhost`, `127.0.0.1`, or directly from a local file to edit content safely, then export the JSON and deploy it.
+      </div>
+
+      <div id="statusMessage" class="status-message"></div>
+
+      <form id="adminForm" class="admin-form">
+        <div class="admin-section">
+          <h2 class="section-title">Business Details</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Site Name</label>
+              <input type="text" class="form-input" id="siteName" placeholder="e.g., SKY FITNESS">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tagline</label>
+              <input type="text" class="form-input" id="tagline" placeholder="e.g., Premium Fitness Centre">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Phone Number (WhatsApp)</label>
+              <input type="tel" class="form-input" id="phone" placeholder="e.g., 919066434725">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Display</label>
+              <input type="text" class="form-input" id="phoneDisplay" placeholder="e.g., +91 90664 34725">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-input" id="email" placeholder="info@domain.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Location</label>
+              <input type="text" class="form-input" id="location" placeholder="Short location">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Address</label>
+            <input type="text" class="form-input" id="address" placeholder="Full address">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Timings (Weekdays)</label>
+              <input type="text" class="form-input" id="timingsWeekdays" placeholder="e.g., 5:00 AM - 10:00 PM">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Timings (Weekend)</label>
+              <input type="text" class="form-input" id="timingsWeekend" placeholder="e.g., 6:00 AM - 8:00 PM">
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-section">
+          <h2 class="section-title">Hero Section</h2>
+          <p class="section-note">Use plain text only. Line breaks are allowed in titles and will render safely on the site.</p>
+          <div class="form-group">
+            <label class="form-label">Badge / Location</label>
+            <input type="text" class="form-input" id="heroBadge" placeholder="Location badge text">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Hero Title</label>
+            <textarea class="form-textarea" id="heroTitle" placeholder="Main headline"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Hero Subtitle</label>
+            <textarea class="form-textarea" id="heroSub" placeholder="Hero subtitle"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">CTA Button Text</label>
+            <input type="text" class="form-input" id="heroCta" placeholder="e.g., Start Free Trial">
+          </div>
+
+          <h3 class="section-note">Hero Stats</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Stat 1 Number</label>
+              <input type="text" class="form-input" id="stat1Number" placeholder="e.g., 500+">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Stat 1 Label</label>
+              <input type="text" class="form-input" id="stat1Label" placeholder="e.g., Members">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Stat 2 Number</label>
+              <input type="text" class="form-input" id="stat2Number" placeholder="e.g., 8+">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Stat 2 Label</label>
+              <input type="text" class="form-input" id="stat2Label" placeholder="e.g., Trainers">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Stat 3 Number</label>
+              <input type="text" class="form-input" id="stat3Number" placeholder="e.g., 5:00 AM">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Stat 3 Label</label>
+              <input type="text" class="form-input" id="stat3Label" placeholder="e.g., Opens Daily">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Stat 4 Number</label>
+              <input type="text" class="form-input" id="stat4Number" placeholder="e.g., 3 yrs">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Stat 4 Label</label>
+              <input type="text" class="form-input" id="stat4Label" placeholder="e.g., In Business">
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-section">
+          <h2 class="section-title">Section Copy</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Programs Eyebrow</label>
+              <input type="text" class="form-input" id="prog-eyebrow">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Programs Title</label>
+              <input type="text" class="form-input" id="prog-title">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Programs Subtitle</label>
+            <textarea class="form-textarea" id="prog-sub"></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Schedule Eyebrow</label>
+              <input type="text" class="form-input" id="sched-eyebrow">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Schedule Title</label>
+              <input type="text" class="form-input" id="sched-title">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Schedule Subtitle</label>
+            <textarea class="form-textarea" id="sched-sub"></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Trainers Eyebrow</label>
+              <input type="text" class="form-input" id="train-eyebrow">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Trainers Title</label>
+              <input type="text" class="form-input" id="train-title">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Trainers Subtitle</label>
+            <textarea class="form-textarea" id="train-sub"></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Pricing Eyebrow</label>
+              <input type="text" class="form-input" id="price-eyebrow">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Pricing Title</label>
+              <input type="text" class="form-input" id="price-title">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Pricing Subtitle</label>
+            <textarea class="form-textarea" id="price-sub"></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Gallery Eyebrow</label>
+              <input type="text" class="form-input" id="gal-eyebrow">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Gallery Title</label>
+              <input type="text" class="form-input" id="gal-title">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Testimonials Eyebrow</label>
+              <input type="text" class="form-input" id="testim-eyebrow">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Testimonials Title</label>
+              <input type="text" class="form-input" id="testim-title">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Contact Eyebrow</label>
+              <input type="text" class="form-input" id="contact-eyebrow">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Contact Title</label>
+              <textarea class="form-textarea" id="contact-title"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Contact Subtitle</label>
+            <textarea class="form-textarea" id="contact-sub"></textarea>
+          </div>
+        </div>
+
+        <div class="admin-section">
+          <h2 class="section-title">Pricing Plans</h2>
+          <p class="section-note">The “Starting From” amount on the site updates automatically from the lowest plan price.</p>
+          <div class="pricing-wrapper">
+            <div class="pricing-plan">
+              <h3>Basic Plan</h3>
+              <div class="form-group">
+                <label class="form-label">Price</label>
+                <input type="number" class="form-input" id="basic-price" placeholder="999">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Note</label>
+                <input type="text" class="form-input" id="basic-note" placeholder="Plan description">
+              </div>
+            </div>
+            <div class="pricing-plan">
+              <h3>Elite Plan</h3>
+              <div class="form-group">
+                <label class="form-label">Price</label>
+                <input type="number" class="form-input" id="elite-price" placeholder="1799">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Note</label>
+                <input type="text" class="form-input" id="elite-note" placeholder="Plan description">
+              </div>
+            </div>
+            <div class="pricing-plan">
+              <h3>Champion Plan</h3>
+              <div class="form-group">
+                <label class="form-label">Price</label>
+                <input type="number" class="form-input" id="champion-price" placeholder="2999">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Note</label>
+                <input type="text" class="form-input" id="champion-note" placeholder="Plan description">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-section">
+          <h2 class="section-title">Footer</h2>
+          <p class="section-note">Only copyright text is editable here. Footer attribution remains locked to avoid SEO and trust issues.</p>
+          <div class="form-group">
+            <label class="form-label">Copyright Text</label>
+            <input type="text" class="form-input" id="copyright" placeholder="© 2026 SKY FITNESS. All rights reserved.">
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button type="button" class="btn btn-save" id="saveButton" onclick="saveChanges()">
+            Save Draft
+          </button>
+          <button type="button" class="btn btn-export" id="exportButton" onclick="exportJSON()">
+            Export JSON
+          </button>
+          <button type="button" class="btn btn-import" id="importButton" onclick="document.getElementById('fileInput').click()">
+            Import JSON
+          </button>
+          <button type="button" class="btn btn-reset" id="resetButton" onclick="resetToDefault()">
+            Reset Draft
+          </button>
+        </div>
+      </form>
+
+      <input type="file" id="fileInput" class="file-input" accept=".json" onchange="importJSON(event)">
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
