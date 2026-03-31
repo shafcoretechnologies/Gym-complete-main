@@ -226,7 +226,12 @@ nav {
 .hero-bg-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(15, 17, 23, 0.75) 0%, rgba(26, 31, 46, 0.75) 50%, rgba(15, 18, 32, 0.75) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(15, 17, 23, 0.75) 0%,
+    rgba(26, 31, 46, 0.75) 50%,
+    rgba(15, 18, 32, 0.75) 100%
+  );
   pointer-events: none;
 }
 .hero-inner {
@@ -365,7 +370,6 @@ nav {
   margin-top: 2px;
   font-weight: 500;
 }
-
 
 /* ── QUICK INFO BAR ── */
 .info-bar {
