@@ -211,57 +211,34 @@ nav {
 
 /* ── HERO ── */
 .hero {
-  background: linear-gradient(135deg, #0f1117 0%, #1a1f2e 50%, #0f1220 100%);
-  padding: 56px 5vw 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  padding: 56px 5vw 40px;
   overflow: hidden;
   position: relative;
   min-height: 520px;
   display: flex;
   align-items: center;
+  width: 100%;
 }
-.hero-bg-pattern {
+.hero-bg-overlay {
   position: absolute;
   inset: 0;
+  background: linear-gradient(135deg, rgba(15, 17, 23, 0.75) 0%, rgba(26, 31, 46, 0.75) 50%, rgba(15, 18, 32, 0.75) 100%);
   pointer-events: none;
-  overflow: hidden;
-}
-.hero-bg-pattern::before {
-  content: "";
-  position: absolute;
-  top: -100px;
-  right: -100px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(
-    circle,
-    rgba(232, 38, 26, 0.18) 0%,
-    transparent 70%
-  );
-  border-radius: 50%;
-}
-.hero-bg-pattern::after {
-  content: "";
-  position: absolute;
-  bottom: -60px;
-  left: 10%;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(
-    circle,
-    rgba(232, 38, 26, 0.08) 0%,
-    transparent 70%
-  );
-  border-radius: 50%;
 }
 .hero-inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 48px;
   align-items: end;
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
   position: relative;
+  z-index: 1;
 }
 .hero-badge {
   display: inline-flex;
@@ -388,48 +365,7 @@ nav {
   margin-top: 2px;
   font-weight: 500;
 }
-.hero-img-wrap {
-  position: relative;
-  align-self: flex-end;
-}
-.hero-img {
-  width: 100%;
-  max-height: 440px;
-  object-fit: cover;
-  object-position: top;
-  border-radius: 16px 16px 0 0;
-}
-.hero-img-badge {
-  position: absolute;
-  top: 20px;
-  left: -20px;
-  background: white;
-  border-radius: 12px;
-  padding: 10px 14px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-.hero-img-badge-icon {
-  width: 36px;
-  height: 36px;
-  background: #fef2f2;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.hero-img-badge strong {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--dark);
-  display: block;
-}
-.hero-img-badge p {
-  font-size: 11px;
-  color: var(--muted);
-}
+
 
 /* ── QUICK INFO BAR ── */
 .info-bar {
@@ -1597,7 +1533,19 @@ footer {
     display: none;
   }
   .hero {
-    padding: 48px 5vw 48px;
+    padding: 40px 5vw 40px;
+    min-height: 480px;
+    background-size: cover;
+    background-position: center 20%;
+  }
+  .hero-stat-num {
+    font-size: 20px;
+  }
+  .hero-stat-label {
+    font-size: 10px;
+  }
+  .hero-stats {
+    gap: 24px;
   }
   .info-bar-inner {
     flex-wrap: wrap;
@@ -1664,7 +1612,19 @@ footer {
   .form-group.full {
     grid-column: span 1;
   }
+  .hero {
+    min-height: 420px;
+    padding: 32px 5vw 32px;
+    background-size: cover;
+    background-position: center 30%;
+  }
+  .hero-stat-num {
+    font-size: 16px;
+  }
+  .hero-stat-label {
+    font-size: 9px;
+  }
   .hero-stats {
-    gap: 20px;
+    gap: 16px;
   }
 }
