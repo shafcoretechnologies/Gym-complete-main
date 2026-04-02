@@ -9,9 +9,7 @@ function $(id) {
 function isLocalEditingEnvironment() {
   const { protocol, hostname } = window.location;
   return (
-    protocol === "file:" ||
-    hostname === "localhost" ||
-    hostname === "127.0.0.1"
+    protocol === "file:" || hostname === "localhost" || hostname === "127.0.0.1"
   );
 }
 
@@ -29,9 +27,11 @@ function showStatus(message, type) {
 function setEditingEnabled(enabled) {
   editingEnabled = enabled;
   $("adminForm").setAttribute("aria-disabled", String(!enabled));
-  ["saveButton", "exportButton", "importButton", "resetButton"].forEach((id) => {
-    $(id).disabled = !enabled;
-  });
+  ["saveButton", "exportButton", "importButton", "resetButton"].forEach(
+    (id) => {
+      $(id).disabled = !enabled;
+    },
+  );
   $("environmentNotice").classList.toggle("show", !enabled);
 }
 
@@ -74,32 +74,35 @@ function buildDefaultData(source = {}) {
 
   return {
     site: {
-      name: sanitizeText(source.site?.name, "SKY FITNESS"),
+      name: sanitizeText(source.site?.name, "Your-Gym"),
       tagline: sanitizeText(source.site?.tagline, "Premium Fitness Centre"),
       description: sanitizeText(
         source.site?.description,
         "Modern equipment, expert coaches, flexible timings. Join our community of 500+ members transforming their health.",
       ),
-      phone: sanitizeText(source.site?.phone, "919066434725"),
-      phoneDisplay: sanitizeText(source.site?.phoneDisplay, "+91 90664 34725"),
-      email: sanitizeText(source.site?.email, "info@skyfitness.com"),
+      phone: sanitizeText(source.site?.phone, "9738722032"),
+      phoneDisplay: sanitizeText(source.site?.phoneDisplay, "+91 97387 22032"),
+      email: sanitizeText(source.site?.email, "info@yourgym.com"),
     },
     seo: {
       pageTitle: sanitizeText(
         source.seo?.pageTitle,
-        "SKY FITNESS Gym — NR Mohalla, Mysore's Premium Fitness Centre",
+        "Your-Gym — Rajiv Nagar, Mysore's Premium Fitness Centre",
       ),
       metaDescription: sanitizeText(
         source.seo?.metaDescription,
-        "Modern equipment, expert coaches, flexible timings. Join 500+ members at SKY FITNESS. Free trial available.",
+        "Modern equipment, expert coaches, flexible timings. Join 500+ members at Your-Gym. Free trial available.",
       ),
     },
     hero: {
-      badge: sanitizeText(source.hero?.badge, "Shivaji Road, NR Mohalla"),
-      title: sanitizeText(source.hero?.title, "Mysore's Premium Fitness Centre"),
+      badge: sanitizeText(source.hero?.badge, "Rajiv Nagar, Mysore"),
+      title: sanitizeText(
+        source.hero?.title,
+        "Mysore's Premium Fitness Centre",
+      ),
       subtitle: sanitizeText(
         source.hero?.subtitle,
-        "Modern equipment, expert coaches, flexible timings. Join 500+ members already transforming their health at SKY FITNESS.",
+        "Modern equipment, expert coaches, flexible timings. Join 500+ members already transforming their health at Your-Gym.",
       ),
       cta: sanitizeText(source.hero?.cta, "Start Free Trial"),
       stats: normalizeStats(source.hero?.stats),
@@ -107,12 +110,9 @@ function buildDefaultData(source = {}) {
     contact: {
       address: sanitizeText(
         source.contact?.address,
-        "#544 Shivaji Road, NR Mohalla, Mysore — 570007",
+        "Rajiv Nagar, Mysore — 570009",
       ),
-      location: sanitizeText(
-        source.contact?.location,
-        "NR Mohalla, Shivaji Road, Mysore",
-      ),
+      location: sanitizeText(source.contact?.location, "Rajiv Nagar, Mysore"),
       timings: {
         weekdays: sanitizeText(
           source.contact?.timings?.weekdays,
@@ -123,12 +123,21 @@ function buildDefaultData(source = {}) {
           "6:00 AM – 8:00 PM",
         ),
       },
-      startingPrice: sanitizeText(source.contact?.startingPrice, `₹${lowestPrice}`),
+      startingPrice: sanitizeText(
+        source.contact?.startingPrice,
+        `₹${lowestPrice}`,
+      ),
     },
     sections: {
       programs: {
-        eyebrow: sanitizeText(source.sections?.programs?.eyebrow, "What we offer"),
-        title: sanitizeText(source.sections?.programs?.title, "Programs for every goal"),
+        eyebrow: sanitizeText(
+          source.sections?.programs?.eyebrow,
+          "What we offer",
+        ),
+        title: sanitizeText(
+          source.sections?.programs?.title,
+          "Programs for every goal",
+        ),
         subtitle: sanitizeText(
           source.sections?.programs?.subtitle,
           "Whether you want to lose weight, build muscle, or just stay active — we have a class for you.",
@@ -152,15 +161,24 @@ function buildDefaultData(source = {}) {
       },
       pricing: {
         eyebrow: sanitizeText(source.sections?.pricing?.eyebrow, "Memberships"),
-        title: sanitizeText(source.sections?.pricing?.title, "Simple, clear pricing"),
+        title: sanitizeText(
+          source.sections?.pricing?.title,
+          "Simple, clear pricing",
+        ),
         subtitle: sanitizeText(
           source.sections?.pricing?.subtitle,
           "No hidden charges. No joining fees. First trial session is completely free.",
         ),
       },
       gallery: {
-        eyebrow: sanitizeText(source.sections?.gallery?.eyebrow, "The facility"),
-        title: sanitizeText(source.sections?.gallery?.title, "See inside SKY FITNESS"),
+        eyebrow: sanitizeText(
+          source.sections?.gallery?.eyebrow,
+          "The facility",
+        ),
+        title: sanitizeText(
+          source.sections?.gallery?.title,
+          "See inside Your-Gym",
+        ),
       },
       testimonials: {
         eyebrow: sanitizeText(
@@ -173,7 +191,10 @@ function buildDefaultData(source = {}) {
         ),
       },
       contact: {
-        eyebrow: sanitizeText(source.sections?.contact?.eyebrow, "Get in touch"),
+        eyebrow: sanitizeText(
+          source.sections?.contact?.eyebrow,
+          "Get in touch",
+        ),
         title: sanitizeText(
           source.sections?.contact?.title,
           "Visit us or Chat on WhatsApp",
@@ -189,13 +210,19 @@ function buildDefaultData(source = {}) {
         id: "basic",
         name: "Basic",
         price: basicPrice,
-        note: sanitizeText(source.pricing?.[0]?.note, "Gym floor only · No lock-in"),
+        note: sanitizeText(
+          source.pricing?.[0]?.note,
+          "Gym floor only · No lock-in",
+        ),
       },
       {
         id: "elite",
         name: "Elite",
         price: elitePrice,
-        note: sanitizeText(source.pricing?.[1]?.note, "All classes included · Best value"),
+        note: sanitizeText(
+          source.pricing?.[1]?.note,
+          "All classes included · Best value",
+        ),
         popular: true,
       },
       {
@@ -222,7 +249,10 @@ function populateForm() {
   const data = currentData;
   const stats = normalizeStats(data.hero?.stats);
   const pricingMap = Object.fromEntries(
-    (Array.isArray(data.pricing) ? data.pricing : []).map((plan) => [plan.id, plan]),
+    (Array.isArray(data.pricing) ? data.pricing : []).map((plan) => [
+      plan.id,
+      plan,
+    ]),
   );
 
   $("siteName").value = data.site.name;
@@ -281,8 +311,14 @@ function populateForm() {
 
 function buildFormData() {
   const draft = buildDefaultData(currentData);
-  const basicPrice = sanitizePrice($("basic-price").value, draft.pricing[0].price);
-  const elitePrice = sanitizePrice($("elite-price").value, draft.pricing[1].price);
+  const basicPrice = sanitizePrice(
+    $("basic-price").value,
+    draft.pricing[0].price,
+  );
+  const elitePrice = sanitizePrice(
+    $("elite-price").value,
+    draft.pricing[1].price,
+  );
   const championPrice = sanitizePrice(
     $("champion-price").value,
     draft.pricing[2].price,
@@ -296,7 +332,10 @@ function buildFormData() {
       name: sanitizeText($("siteName").value, draft.site.name),
       tagline: sanitizeText($("tagline").value, draft.site.tagline),
       phone: sanitizeText($("phone").value, draft.site.phone),
-      phoneDisplay: sanitizeText($("phoneDisplay").value, draft.site.phoneDisplay),
+      phoneDisplay: sanitizeText(
+        $("phoneDisplay").value,
+        draft.site.phoneDisplay,
+      ),
       email: sanitizeText($("email").value, draft.site.email),
     },
     hero: {
@@ -307,19 +346,31 @@ function buildFormData() {
       cta: sanitizeText($("heroCta").value, draft.hero.cta),
       stats: [
         {
-          number: sanitizeText($("stat1Number").value, draft.hero.stats[0].number),
+          number: sanitizeText(
+            $("stat1Number").value,
+            draft.hero.stats[0].number,
+          ),
           label: sanitizeText($("stat1Label").value, draft.hero.stats[0].label),
         },
         {
-          number: sanitizeText($("stat2Number").value, draft.hero.stats[1].number),
+          number: sanitizeText(
+            $("stat2Number").value,
+            draft.hero.stats[1].number,
+          ),
           label: sanitizeText($("stat2Label").value, draft.hero.stats[1].label),
         },
         {
-          number: sanitizeText($("stat3Number").value, draft.hero.stats[2].number),
+          number: sanitizeText(
+            $("stat3Number").value,
+            draft.hero.stats[2].number,
+          ),
           label: sanitizeText($("stat3Label").value, draft.hero.stats[2].label),
         },
         {
-          number: sanitizeText($("stat4Number").value, draft.hero.stats[3].number),
+          number: sanitizeText(
+            $("stat4Number").value,
+            draft.hero.stats[3].number,
+          ),
           label: sanitizeText($("stat4Label").value, draft.hero.stats[3].label),
         },
       ],
@@ -346,7 +397,10 @@ function buildFormData() {
           $("prog-eyebrow").value,
           draft.sections.programs.eyebrow,
         ),
-        title: sanitizeText($("prog-title").value, draft.sections.programs.title),
+        title: sanitizeText(
+          $("prog-title").value,
+          draft.sections.programs.title,
+        ),
         subtitle: sanitizeText(
           $("prog-sub").value,
           draft.sections.programs.subtitle,
@@ -522,7 +576,9 @@ async function fetchSourceData() {
 
 async function resetToDefault() {
   if (!editingEnabled) return;
-  if (!window.confirm("Reset your local draft to the current content.json file?")) {
+  if (
+    !window.confirm("Reset your local draft to the current content.json file?")
+  ) {
     return;
   }
 
@@ -550,7 +606,10 @@ async function initializeAdmin() {
     console.error(error);
     currentData = buildDefaultData();
     populateForm();
-    showStatus("Loaded fallback content because the source file could not be read.", "error");
+    showStatus(
+      "Loaded fallback content because the source file could not be read.",
+      "error",
+    );
   }
 }
 

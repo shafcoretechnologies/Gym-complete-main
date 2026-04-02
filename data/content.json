@@ -1,20 +1,20 @@
 {
   "site": {
-    "name": "SKY FITNESS",
+    "name": "Your-Gym",
     "tagline": "Premium Fitness Centre",
     "description": "Modern equipment, expert coaches, flexible timings. Join our community of 500+ members transforming their health.",
-    "phone": "919066434725",
-    "phoneDisplay": "+91 90664 34725",
-    "email": "info@skyfitness.com"
+    "phone": "9738722032",
+    "phoneDisplay": "+91 97387 22032",
+    "email": "info@yourgym.com"
   },
   "seo": {
-    "pageTitle": "SKY FITNESS Gym — NR Mohalla, Mysore's Premium Fitness Centre",
-    "metaDescription": "Modern equipment, expert coaches, flexible timings. Join 500+ members at SKY FITNESS. Free trial available."
+    "pageTitle": "Your-Gym — Rajiv Nagar, Mysore's Premium Fitness Centre",
+    "metaDescription": "Modern equipment, expert coaches, flexible timings. Join 500+ members at Your-Gym. Free trial available."
   },
   "hero": {
-    "badge": "Shivaji Road, NR Mohalla",
+    "badge": "Rajiv Nagar, Mysore",
     "title": "Mysore's Premium Fitness Centre",
-    "subtitle": "Modern equipment, expert coaches, flexible timings. Join 500+ members already transforming their health at SKY FITNESS.",
+    "subtitle": "Modern equipment, expert coaches, flexible timings. Join 500+ members already transforming their health at Your-Gym.",
     "cta": "Start Free Trial",
     "stats": [
       { "number": "500+", "label": "Members" },
@@ -24,8 +24,8 @@
     ]
   },
   "contact": {
-    "address": "#544 Shivaji Road, NR Mohalla, Mysore — 570007",
-    "location": "NR Mohalla, Shivaji Road, Mysore",
+    "address": "Rajiv Nagar, Mysore — 570009",
+    "location": "Rajiv Nagar, Mysore",
     "timings": {
       "weekdays": "5:00 AM – 10:00 PM",
       "weekend": "6:00 AM – 8:00 PM"
@@ -55,7 +55,7 @@
     },
     "gallery": {
       "eyebrow": "The facility",
-      "title": "See inside SKY FITNESS"
+      "title": "See inside Your-Gym"
     },
     "testimonials": {
       "eyebrow": "Member stories",
@@ -89,7 +89,7 @@
     }
   ],
   "footer": {
-    "copyright": "© 2025 SKY FITNESS. All rights reserved.",
+    "copyright": "© 2025 Your-Gym. All rights reserved.",
     "credit": "Built with Shafcore CMS"
   }
 }
