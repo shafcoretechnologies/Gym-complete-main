@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found — Your-Gym</title>
+    <meta name="description" content="The page you're looking for doesn't exist.">
+    <meta name="theme-color" content="#e8261a">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            background: linear-gradient(135deg, #111318 0%, #1a1d2e 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .error-container {
+            max-width: 600px;
+            text-align: center;
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .error-code {
+            font-size: 140px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #e8261a, #ff3b2e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 20px 0;
+            line-height: 1;
+        }
+
+        .error-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        .error-description {
+            font-size: 16px;
+            color: #9ca3af;
+            margin: 16px 0 40px;
+            line-height: 1.8;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: "Plus Jakarta Sans", sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #e8261a, #ff3b2e);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(232, 38, 26, 0.3);
+        }
+
+        .btn-secondary {
+            background: #2c3142;
+            color: #ffffff;
+            border: 1px solid #404558;
+        }
+
+        .btn-secondary:hover {
+            background: #353d52;
+            border-color: #505666;
+            transform: translateY(-2px);
+        }
+
+        .nav-bar {
+            width: 100%;
+            border-bottom: 1px solid #2c3142;
+            padding: 16px 20px;
+            margin-bottom: 60px;
+            background: rgba(17, 19, 24, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .nav-brand svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .footer-note {
+            font-size: 14px;
+            color: #6b7280;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #2c3142;
+        }
+
+        @media (max-width: 640px) {
+            .error-code {
+                font-size: 80px;
+            }
+
+            .error-title {
+                font-size: 24px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <a href="/" class="nav-brand">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+            <span>Your-Gym</span>
+        </a>
+    </div>
+
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <h1 class="error-title">Page Not Found</h1>
+        <p class="error-description">
+            Sorry, the page you're looking for doesn't exist. It may have been moved or deleted.
+        </p>
+
+        <div class="button-group">
+            <a href="/" class="btn btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+                Back to Home
+            </a>
+            <a href="#programs" class="btn btn-secondary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M12 5v14M5 12h14"/>
+                </svg>
+                View Programs
+            </a>
+        </div>
+
+        <div class="footer-note">
+            <p>If you believe this is a mistake, please contact us on WhatsApp.</p>
+        </div>
+    </div>
+</body>
+</html>
